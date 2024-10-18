@@ -8,48 +8,88 @@ Algoritmo calculatron
 	vidas<-10
 	dificultad<-"normal"
 	Repetir
-		
+		count=0
 		Segun seleccion Hacer
 				
 			1:
 				
 				Mientras vidas<>0 Hacer
-					num1<-azar(10)
-					num2<-azar(10)
-					operacion<-azar(3)
-					Segun operacion Hacer
-						0:
-							Escribir num1, " + ", num2
-							Leer respuesta
-							resultado <- num1+num2
-						1:
-							Escribir num1, " - ", num2
-							Leer respuesta
-							resultado <- num1-num2
-							
-						2:
-							Escribir num1, " * ", num2
-							Leer respuesta
-							resultado <- num1*num2
-					Fin Segun
-					Si resultado=respuesta Entonces
-						count<-count+1
+					Si dificultad="normal" Entonces
+						num1<-azar(10)
+						num2<-azar(10)
+						operacion<-azar(3)
+						Segun operacion Hacer
+							0:
+								Escribir num1, " + ", num2
+								Leer respuesta
+								resultado <- num1+num2
+							1:
+								Escribir num1, " - ", num2
+								Leer respuesta
+								resultado <- num1-num2
+								
+							2:
+								Escribir num1, " * ", num2
+								Leer respuesta
+								resultado <- num1*num2
+						Fin Segun
+						Si resultado=respuesta Entonces
+							count<-count+1
+							Escribir "HAS ACERTADO!"
+						SiNo
+							vidas<-vidas-1
+							Escribir "Has fallado!!"
+							Escribir "Te quedan ",vidas
+							Escribir "Has acertado un total de ",count," cuentas."
+							Si vidas=0 Entonces
+								Escribir "NO TE QUEDAN VIDAS"
+							Fin Si
+						Fin Si
 					SiNo
-						vidas<-vidas-1
-						Escribir "Has fallado!!"
-						Escribir "Te quedan ",vidas
-						Escribir "Has acertado un total de ",count," cuentas."
-						Si vidas=0 Entonces
-							Escribir "NO TE QUEDAN VIDAS"
+						num1<-azar(20)
+						num2<-azar(20)
+						operacion<-azar(3)
+						Segun operacion Hacer
+							0:
+								Escribir num1, " + ", num2
+								Leer respuesta
+								resultado <- num1+num2
+							1:
+								Escribir num1, " - ", num2
+								Leer respuesta
+								resultado <- num1-num2
+								
+							2:
+								Escribir num1, " * ", num2
+								Leer respuesta
+								resultado <- num1*num2
+						Fin Segun
+						Si resultado=respuesta Entonces
+							count<-count+1
+							Escribir "HAS ACERTADO!"
+						SiNo
+							vidas<-vidas-1
+							Escribir "Has fallado!!"
+							Escribir "Te quedan ",vidas
+							Escribir "Has acertado un total de ",count," cuentas."
+							Si vidas=0 Entonces
+								Escribir "NO TE QUEDAN VIDAS"
+							Fin Si
 						Fin Si
 					Fin Si
+					
 				Fin Mientras
 				Escribir "Bienvenido a Calculatron, elige una opcion: "
 				Escribir "1. Jugar"
 				Escribir "2. Configurar"
 				Escribir "0. Salir"
 				Leer seleccion
-				vidas<-10
+				Si nueva_vida=0 Entonces
+					vidas<-10
+				SiNo
+					vidas<-nueva_vida
+				Fin Si
+				
 			2:	
 				Escribir "La configuracion actual es: "
 				Escribir "Numero de vidas: ",vidas
